@@ -1,8 +1,8 @@
 {
-    "name": "node-template",
+    "name": "nodejs-calculator",
     "version": "1.0.0",
     "type": "module",
-    "description": "Plantilla base para proyectos de nodejs",
+    "description": "First practice of the course nodejs",
     "main": "index.js",
     "scripts": {
         "dev": "nodemon src/index.js",
