@@ -2,7 +2,7 @@
     "name": "nodejs-calculator",
     "version": "1.0.0",
     "type": "module",
-    "description": "First practice of the course nodejs",
+    "description": "First practice of the nodejs course",
     "main": "index.js",
     "scripts": {
         "dev": "nodemon src/index.js",
