@@ -1,11 +1,11 @@
-import readline from 'readline';
+import readline from 'node:readline';
 import { promisify } from 'util';
 
-const consoleInterfase = readline.createInterface({
+const consoleInterface = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
 
-export const promptQuestion = promisify(consoleInterfase.question).bind(
-    consoleInterfase
+export const promptQuestion = promisify(consoleInterface.question).bind(
+    consoleInterface
 );

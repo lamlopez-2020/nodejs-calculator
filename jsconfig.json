@@ -4,6 +4,7 @@
         "module": "Node16",
         "baseUrl": "./",
         "paths": {
+            "#Constants/*": ["./src/constants/*"],
             "#Lib/*": ["./src/lib/*"]
         }
     }

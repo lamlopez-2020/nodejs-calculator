@@ -31,6 +31,7 @@
         "prettier": "2.8.7"
     },
     "imports": {
+        "#Constants/*": "./src/constants/*",
         "#Lib/*": "./src/lib/*"
     },
     "lint-staged": {

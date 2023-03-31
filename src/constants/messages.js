@@ -1,0 +1,1 @@
+export const INVALID_INPUT = 'ENTRADA NO VÁLIDA';
