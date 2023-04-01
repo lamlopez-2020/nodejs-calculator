@@ -32,6 +32,7 @@
     },
     "imports": {
         "#Constants/*": "./src/constants/*",
+        "#Errors/*": "./src/errors/*",
         "#Lib/*": "./src/lib/*"
     },
     "lint-staged": {

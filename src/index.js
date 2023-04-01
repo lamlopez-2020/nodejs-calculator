@@ -1,35 +1,27 @@
-import { INVALID_INPUT } from '#Constants/messages.js';
-import { OPERATORS } from '#Constants/operators.js';
+import { InvalidInputError } from '#Errors/invalidInputError.js';
+import { getOperator } from '#Lib/getOperator.js';
 import { promptQuestion } from '#Lib/promptQuestion.js';
 
 (async () => {
-    // 1ª Create user input by console
-    const userAnswer = await promptQuestion('Introduce la operación: ');
-    console.log(userAnswer);
+    try {
+        // 1ª Create user input by console
+        const userAnswer = await promptQuestion('Introduce la operación: ');
+        console.log(userAnswer);
 
-    // 2ª Console input validation
+        // 2ª Console input validation
 
-    const standarizeInput = userAnswer.trim();
+        const standarizeInput = userAnswer.trim();
 
-    if (standarizeInput === '') {
-        console.log(INVALID_INPUT);
-        return;
+        if (standarizeInput === '') throw new InvalidInputError();
+
+        const operator = getOperator(standarizeInput);
+
+        if (!operator) throw new InvalidInputError();
+    } catch (error) {
+        if (error instanceof InvalidInputError) console.log(error.message);
+        else
+            console.log(
+                `Error no Controlado : ${error.message}. Stack: ${error.stack}`
+            );
     }
-
-    let operator;
-
-    for (const allowedOperator of OPERATORS) {
-        if (standarizeInput.includes(allowedOperator)) {
-            if (
-                operator ||
-                standarizeInput.indexOf(allowedOperator) !==
-                    standarizeInput.lastIndexOf(allowedOperator)
-            )
-                console.log(INVALID_INPUT);
-
-            operator = allowedOperator;
-        }
-    }
-
-    if (!operator) console.log(INVALID_INPUT);
 })();
