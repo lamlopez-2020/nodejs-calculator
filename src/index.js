@@ -2,7 +2,9 @@ import { promptQuestion } from '#Lib/promptQuestion.js';
 import { BYNARY_OPERATORS } from '#Constants/operators.js';
 import { getOperator } from '#Lib/getOperator.js';
 import { InvalidInputError } from '#Errors/invalidInputError.js';
+import { InvalidOperation } from '#Errors/invalidOperation.js';
 import { getBinaryOperating, getSingleOperating } from '#Lib/getOperatings.js';
+import { OPERATIONS } from '#Constants/operations.js';
 
 (async () => {
     try {
@@ -26,11 +28,21 @@ import { getBinaryOperating, getSingleOperating } from '#Lib/getOperatings.js';
                 getBinaryOperating(splittedInput);
         else [firstOperating] = getSingleOperating(splittedInput);
 
-        console.log(firstOperating, operator, secondOperating);
+        // 3ª Perform the operation
 
-        // Perform the operation
+        const result = OPERATIONS[operator](firstOperating, secondOperating);
+
+        const roundedResult = Number(Math.round(result + 'e+5') + 'e-5');
+
+        if (isNaN(roundedResult) || !isFinite(roundedResult))
+            throw new InvalidOperation();
+        else console.log(roundedResult);
     } catch (error) {
-        if (error instanceof InvalidInputError) console.log(error.message);
+        if (
+            error instanceof InvalidInputError ||
+            error instanceof InvalidOperation
+        )
+            console.log(error.message);
         else
             console.log(
                 `Error no Controlado : ${error.message}. Stack: ${error.stack}`
