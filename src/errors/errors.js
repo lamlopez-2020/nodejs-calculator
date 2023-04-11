@@ -4,6 +4,7 @@ export class InvalidInputError extends Error {
     }
 }
 
+// error de operaciones infinitas
 export class InvalidOperation extends Error {
     constructor() {
         super('OPERACIÓN NO VÁLIDA');
