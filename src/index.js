@@ -1,8 +1,7 @@
 import { promptQuestion } from '#Lib/promptQuestion.js';
 import { BYNARY_OPERATORS } from '#Constants/operators.js';
 import { getOperator } from '#Lib/getOperator.js';
-import { InvalidInputError } from '#Errors/invalidInputError.js';
-import { InvalidOperation } from '#Errors/invalidOperation.js';
+import { InvalidInputError, InvalidOperation } from '#Errors/errors.js';
 import { getBinaryOperating, getSingleOperating } from '#Lib/getOperatings.js';
 import { OPERATIONS } from '#Constants/operations.js';
 

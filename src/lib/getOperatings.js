@@ -1,4 +1,4 @@
-import { InvalidInputError } from '#Errors/invalidInputError.js';
+import { InvalidInputError } from '#Errors/errors.js';
 
 export const getBinaryOperating = ([leftSide, rightSide]) => {
     if (!leftSide || !rightSide) throw new InvalidInputError();
