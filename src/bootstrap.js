@@ -1,9 +1,7 @@
 import { promptQuestion } from '#Lib/promptQuestion.js';
-import { BYNARY_OPERATORS } from '#Constants/operators.js';
-import { getOperator } from '#Lib/getOperator.js';
 import { InvalidInputError, InvalidOperation } from '#Errors/errors.js';
-import { getBinaryOperating, getSingleOperating } from '#Lib/getOperatings.js';
 import { OPERATIONS } from '#Constants/operations.js';
+import { extractByredex } from '#Lib/extractByRedex.js';
 
 export const bootstrap = async () => {
     try {
@@ -12,27 +10,16 @@ export const bootstrap = async () => {
 
         // 2ª Console input validation and separate the parts of them into operands and operator
 
-        const standarizeInput = userAnswer.trim();
-
-        if (!standarizeInput) throw new InvalidInputError();
+        const standarizeInput = userAnswer.trim().replaceAll(',', '.');
 
         if (!standarizeInput) throw new InvalidInputError();
 
         if (standarizeInput === 'exit') return true;
 
-        const operator = getOperator(standarizeInput);
+        const [firstOperating, operator, secondOperating] =
+            extractByredex(standarizeInput);
 
-        const splittedInput = standarizeInput.split(operator);
-
-        let firstOperating, secondOperating;
-
-        if (BYNARY_OPERATORS.includes(operator))
-            [firstOperating, secondOperating] =
-                getBinaryOperating(splittedInput);
-        else [firstOperating] = getSingleOperating(splittedInput);
-
-        // 3ª Perform the operrors module creationeration
-
+        // 3ª Perform the operation
         const result = OPERATIONS[operator](firstOperating, secondOperating);
 
         const roundedResult = Number(Math.round(result + 'e+5') + 'e-5');
