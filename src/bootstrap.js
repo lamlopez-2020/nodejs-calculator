@@ -16,8 +16,6 @@ export const bootstrap = async () => {
 
         if (!standarizeInput) throw new InvalidInputError();
 
-        if (!standarizeInput) throw new InvalidInputError();
-
         if (standarizeInput === 'exit') return true;
 
         const operator = getOperator(standarizeInput);
@@ -32,7 +30,7 @@ export const bootstrap = async () => {
         else [firstOperating] = getSingleOperating(splittedInput);
 
         // 3ª Perform the operrors module creationeration
-
+        // Esto es la forma dinámica de llamar al método dentro de un objeto
         const result = OPERATIONS[operator](firstOperating, secondOperating);
 
         const roundedResult = Number(Math.round(result + 'e+5') + 'e-5');
