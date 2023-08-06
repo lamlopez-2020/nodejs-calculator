@@ -1,8 +1,8 @@
 {
-    "name": "node-template",
+    "name": "nodejs-calculator",
     "version": "1.0.0",
     "type": "module",
-    "description": "Template for nodejs projects",
+    "description": "First practice of the LearnThis Academy Nodejs course",
     "scripts": {
         "dev": "nodemon src/index.js",
         "start": "node src/index.js",
