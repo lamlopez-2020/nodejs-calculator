@@ -1,10 +1,10 @@
-import { OPERATORS } from '#Constants/operators.js';
+import { ALL_OPERATORS } from '#Constants/operators.js';
 import { InvalidInputError } from '#Errors/invalidInputError.js';
 
 export const getOperator = (standarizeInput) => {
     let operator;
 
-    for (const allowedOperator of OPERATORS) {
+    for (const allowedOperator of ALL_OPERATORS) {
         if (standarizeInput.includes(allowedOperator)) {
             if (
                 operator ||
@@ -16,5 +16,8 @@ export const getOperator = (standarizeInput) => {
             operator = allowedOperator;
         }
     }
+
+    if (!operator) throw new InvalidInputError();
+
     return operator;
 };
